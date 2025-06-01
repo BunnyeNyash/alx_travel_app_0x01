@@ -15,16 +15,66 @@ This milestone focuses on setting up the database layer, serialization logic for
 
 ### Project Structure
 ```
-alx_travel_app/
-├── listings/
-│ ├── models.py
-│ ├── serializers.py
-│ └── management/
-│ └── commands/
-│ └── seed.py
-├── manage.py
-└── README.md
+alx_travel_app_0x00/
+├── alx_travel_app/
+│   ├── listings/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── management/
+│   │   │   └── commands/
+│   │   │       └── seed.py
+│   │   ├── migrations/
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── alx_travel_app/
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── db.sqlite3
+│   ├── manage.py
+│   └── requirements.txt
+├── README.md
 ```
+
+### Key Files and Their Roles
+- listings/models.py: Defines the database models:
+
+  - Listing: Represents a travel listing.
+  - Booking: Represents a user's booking for a listing.
+  - Review: Represents a user's review of a listing.
+
+- listings/serializers.py: Contains serializers for the Listing and Booking models, facilitating the conversion between model instances and JSON representations for API interactions.
+
+- listings/management/commands/seed.py: Implements a custom Django management command to seed the database with sample data for testing and development purposes.
+
+- listings/views.py: Contains view functions or classes to handle HTTP requests and return responses.
+
+- listings/urls.py: Maps URLs to the corresponding views in the listings app.
+
+- alx_travel_app/settings.py: Configures the Django project's settings, including installed apps, middleware, database configurations, and more.
+
+- manage.py: A command-line utility that lets you interact with this Django project in various ways.
+
+- requirements.txt: Lists the Python packages required to run the project.
+
+- README.md: Provides an overview of the project, setup instructions, and other relevant information.
+
+
+### Functionality and Purpose
+This Django project is designed to manage travel listings, bookings, and reviews. The primary functionalities include:
+
+- Modeling: Defining the structure of the data with appropriate relationships and constraints.
+- Serialization: Preparing data for API consumption by converting complex data types to native Python datatypes.
+- Seeding: Populating the database with initial data to facilitate development and testing.
+
+
 
 ### Tasks Completed
 
