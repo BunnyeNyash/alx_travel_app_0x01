@@ -69,3 +69,4 @@ class ReviewSerializer(serializers.ModelSerializer):
             comment=comment
         )
         return review
+
