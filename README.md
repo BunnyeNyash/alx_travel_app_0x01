@@ -113,15 +113,37 @@ git clone https://github.com/BunnyeNyash/alx_travel_app_0x00.git
 cd alx_travel_app_0x00
 ```
 
-2. Run Migrations
+2. Create and activate a virtual environment:
+
+```bash
+python -m venv env
+source env/bin/activate  # On Windows: env\Scripts\activate
+```
+
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Run Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-3. Seed the Database
+5. Seed the Database
 
 ```bash
 python manage.py seed
 ```
 
+6. Run the development server:
+
+```bash
+python manage.py runserver
+```
+
+7. Access the application:
+
+Open your browser and navigate to http://127.0.0.1:8000/ to view the application.
