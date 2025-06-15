@@ -13,6 +13,14 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+
+The router creates endpoints like:
+    a. /api/listings/ (GET, POST)
+    b. /api/listings/<id>/ (GET, PUT, DELETE)
+    c. /api/bookings/ (GET, POST)
+    d. /api/bookings/<id>/ (GET, PUT, DELETE)
+
+The swagger/ endpoint provides Swagger UI for API documentation.
 """
 from django.contrib import admin
 from django.urls import path, include
