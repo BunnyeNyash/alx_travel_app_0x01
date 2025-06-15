@@ -1,16 +1,16 @@
-# ALX Travel App 0x00
+# ALX Travel App 0x01
 
-## Milestone 2: Creating Models, Serializers, and Seeders
+## Milestone 3: Creating Views and API Endpoints
 
 ### Objective
 
-This milestone focuses on setting up the database layer, serialization logic for API responses, and creating a database seeder for the travel listings application.
+This is a Django-based travel application API for managing listings and bookings, built as part of Milestone 3. We are to build API views to manage listings and bookings, and ensure the endpoints are documented with Swagger.
 
 ---
 
 ### Repository
 
-- GitHub: [alx_travel_app_0x00](https://github.com/BunnyeNyash/alx_travel_app_0x00.git)
+- GitHub: [alx_travel_app_0x01](https://github.com/BunnyeNyash/alx_travel_app_0x01.git)
 - Main Directory: `alx_travel_app`
 
 ### Project Structure
@@ -67,50 +67,12 @@ alx_travel_app_0x00/
 - README.md: Provides an overview of the project, setup instructions, and other relevant information.
 
 
-### Functionality and Purpose
-This Django project is designed to manage travel listings, bookings, and reviews. The primary functionalities include:
-
-- Modeling: Defining the structure of the data with appropriate relationships and constraints.
-- Serialization: Preparing data for API consumption by converting complex data types to native Python datatypes.
-- Seeding: Populating the database with initial data to facilitate development and testing.
-
-
-
-### Tasks Completed
-
-#### 1. **Project Duplication**
-- The original repository `alx_travel_app` was successfully duplicated into this new repository: `alx_travel_app_0x00`.
-
-#### 2. **Models Implementation**
-- Defined the following models in `listings/models.py`:
-  - `Listing`: Represents a travel listing.
-  - `Booking`: Represents a user's booking for a listing.
-  - `Review`: Represents a review given by a user for a listing.
-- Included appropriate fields, data types, relationships (`ForeignKey`, `OneToMany`, etc.), and constraints.
-
-#### 3. **Serializers**
-- Created `ListingSerializer` and `BookingSerializer` in `listings/serializers.py`.
-- These serializers handle conversion between Django model instances and JSON format for API responses.
-
-#### 4. **Seeder Command**
-- Added a custom Django management command in `listings/management/commands/seed.py`.
-- The command populates the database with realistic sample data for Listings (and optionally Bookings/Reviews).
-
-#### 5. **Testing the Seeder**
-- Verified the seeder by running:
-```bash
-python manage.py seed
-```
-
-- Sample listings were added successfully to the database.
-
-
 ### How to Use
 1. Clone the Repository
 
 ```bash
-git clone https://github.com/BunnyeNyash/alx_travel_app_0x00.git
-cd alx_travel_app_0x00
+git clone https://github.com/BunnyeNyash/alx_travel_app_0x01.git
+cd alx_travel_app_0x01
 ```
 
 2. Create and activate a virtual environment:
@@ -132,18 +94,98 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-5. Seed the Database
-
-```bash
-python manage.py seed
-```
-
-6. Run the development server:
+5. Run the development server:
 
 ```bash
 python manage.py runserver
 ```
 
-7. Access the application:
 
-Open your browser and navigate to http://127.0.0.1:8000/ to view the application.
+### API Endpoints
+**Listings:**
+- `GET /api/listings/`: List all listings
+- `POST /api/listings/`: Create a new listing
+- `GET /api/listings/<id>/`: Retrieve a listing
+- `PUT /api/listings/<id>/`: Update a listing
+- `DELETE /api/listings/<id>/`: Delete a listing
+
+**Bookings:**
+- `GET /api/bookings/`: List all bookings
+- `POST /api/bookings/`: Create a new booking
+- `GET /api/bookings/<id>/`: Retrieve a booking
+- `PUT /api/bookings/<id>/`: Update a booking
+- `DELETE /api/bookings/<id>/`: Delete a booking
+
+### Swagger Documentation
+Access the API documentation at http://127.0.0.1:8000/swagger/.
+
+**Expected Responses:**
+```
+GET: 200 OK
+POST: 201 Created
+PUT: 200 OK
+DELETE: 204 No Content
+Errors (e.g., invalid data): 400 Bad Request
+```
+
+
+### Testing
+Use Postman to test the endpoints
+
+**1. Listings:**
+
+**GET** `http://127.0.0.1:8000/api/listings/`: *Retrieve all listings*
+
+**POST** `http://127.0.0.1:8000/api/listings/`:
+```json
+{
+    "title": "Cozy Cabin",
+    "description": "A nice cabin in the woods",
+    "price": 100.00,
+    "location": "Mountain Valley"
+}
+```
+
+**GET** `http://127.0.0.1:8000/api/listings/1/`: *Retrieve a specific listing*
+
+**PUT** `http://127.0.0.1:8000/api/listings/1/`:
+```json
+{
+    "title": "Updated Cozy Cabin",
+    "description": "A nice cabin in the woods",
+    "price": 120.00,
+    "location": "Mountain Valley"
+}
+```
+
+**DELETE** `http://127.0.0.1:8000/api/listings/1/`: *Delete a listing*
+
+
+
+**2. Bookings:**
+
+**GET** `http://127.0.0.1:8000/api/bookings/`: *Retrieve all bookings*
+
+**POST** `http://127.0.0.1:8000/api/bookings/`:
+```json
+{
+    "listing": 1,
+    "user": 1,
+    "start_date": "2025-07-01",
+    "end_date": "2025-07-05"
+}
+```
+
+**GET** `http://127.0.0.1:8000/api/bookings/1/`: *Retrieve a specific booking*
+
+**PUT** `http://127.0.0.1:8000/api/bookings/1/`:
+```json
+{
+    "listing": 1,
+    "user": 1,
+    "start_date": "2025-07-02",
+    "end_date": "2025-07-06"
+}
+```
+
+**DELETE** `http://127.0.0.1:8000/api/bookings/1/`: *Delete a booking*
